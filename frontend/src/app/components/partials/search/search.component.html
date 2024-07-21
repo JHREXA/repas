@@ -1,0 +1,7 @@
+<div>
+    <input #s type="text" 
+        placeholder="Recherchez votre plat!" 
+        (keyup.enter)="search(s.value)"
+        [value]="searchTerm"> 
+    <button (click)="search(s.value)">Recherche</button><!-- Lorsque le bouton est cliqué, appelle la méthode search avec la valeur actuelle du champ -->
+</div>

@@ -1,0 +1,124 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin: 3rem;
+    padding: 1rem; /* Ajoute un peu d'espace interne autour des éléments du conteneur */
+    border-radius: 1rem; /* Ajoute des coins arrondis au conteneur */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Ombre portée pour le conteneur */
+  }
+  
+  img {
+    border-radius: 3rem;
+    height: 35rem;
+    margin: 1rem;
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Ombre portée pour l'image */
+  }
+  
+  .details {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 2rem;
+    color: black;
+    max-width: 40rem; /* Limite la largeur pour ne pas dépasser la hauteur de l'image */
+    box-sizing: border-box; /* Assure que le padding est inclus dans la largeur totale */
+  }
+  
+  .header {
+    display: flex;
+    align-items: center; /* Aligne le nom et l'icône du cœur verticalement */
+    margin-bottom: 0.5rem; /* Réduit l'espacement entre l'en-tête et les sections suivantes */
+  }
+  
+  .name {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-right: 4rem; /* Distance entre le nom et l'icône du cœur */
+  }
+  
+  .favourite {
+    color: #e72929;
+    font-size: 2.5rem;
+    margin-left: 2rem; /* Espace à gauche de l'icône du cœur */
+  }
+  
+  .rating {
+    margin-bottom: 0.5rem; /* Réduit l'espacement sous les étoiles */
+  }
+  
+  .origins,
+  .tags,
+  .cook-time,
+  .price {
+    margin: 0.5rem 0; /* Réduit l'espacement vertical entre les sections */
+  }
+  
+  .origins {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .origins span {
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    margin: 0.5rem 0.5rem 0.5rem 0;
+    background-color: aliceblue;
+    border-radius: 5px;
+  }
+  
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .tags a {
+    background-color: #f0f0f0;
+    padding: 0.3rem 1rem;
+    margin: 0.2rem 0.15rem;
+    border-radius: 10rem;
+    font-weight: 600;
+    color: blue;
+    text-decoration: none;
+  }
+  
+  .cook-time {
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+  }
+  
+  .cook-time fa-icon {
+    margin-left: 0.5rem;
+  }
+  
+  .price {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  button {
+    margin-top: 1rem;
+    width: 66%; /* Double la largeur du bouton à deux tiers du conteneur */
+    max-width: 20rem; /* Ajuste la largeur maximale du bouton */
+    height: 2.5rem; /* Ajuste la hauteur du bouton */
+    font-size: 0.75rem; /* Réduit la taille du texte */
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px; /* Ajuste le border-radius */
+    cursor: pointer;
+    display: inline-flex; /* Utilisé pour centrer le texte */
+    align-items: center; /* Centre le texte verticalement */
+    justify-content: center; /* Centre le texte horizontalement */
+    padding: 0; /* Supprime le padding par défaut */
+    box-sizing: border-box; /* Assure que le padding et border sont inclus dans la largeur/hauteur */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Ombre portée pour le bouton */
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  

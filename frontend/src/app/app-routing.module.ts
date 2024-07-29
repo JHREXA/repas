@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/pages/home/home.component';
 import { PlatPageComponent } from './components/pages/plat-page/plat-page.component';
 import { CartPageComponent } from './components/pages/cart-page/cart-page.component';
+import { LoginPageComponent } from './components/pages/login-page/login-page.component';
 
 // Définition des routes de l'application
 const routes: Routes = [
@@ -10,7 +11,8 @@ const routes: Routes = [
     { path: 'search/:searchTerm', component: HomeComponent }, // Route pour la recherche avec un paramètre 'searchTerm', utilise également HomeComponent
     { path: 'tag/:tag', component: HomeComponent},
     { path: 'plat/:id', component: PlatPageComponent},
-    { path: 'cart-page', component: CartPageComponent}
+    { path: 'cart-page', component: CartPageComponent},
+    { path: 'login', component: LoginPageComponent}
 ];
 
 @NgModule({

@@ -12,7 +12,9 @@ export class TagsComponent {
     tags?:Tag[];
 
     constructor(platService: PlatService){
-        this.tags=platService.getAllTags();
+        platService.getAllTags().subscribe(serverTags => {
+            this.tags = serverTags;
+        });
 
     }
 }

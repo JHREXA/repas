@@ -57,9 +57,9 @@ export class CartService {
   }
 
   // Méthode pour obtenir le BehaviorSubject du panier
-  obtenirCart(): BehaviorSubject<Cart> {
+  /*obtenirCart(): BehaviorSubject<Cart> {
     return this.cartSubject;
-  }
+  }*/
 
   // Méthode pour vider le panier
   clearCart(): void {

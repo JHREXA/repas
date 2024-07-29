@@ -1,6 +1,9 @@
 <app-titre titre="Cart Page" margin="1.5rem 0 0 2.5rem"></app-titre>
-
-<div class="container">
+<app-not-found
+  [isVisible]="!cart || !cart.items.length"
+  pasTrouveMessage="Le paneau est vide!"
+></app-not-found>
+<div *ngIf="cart && cart.items.length" class="container">
     <ul class="cart-items">
         <li class="cart-item" *ngFor="let cartItem of cart.items">
             <img class="cart-item-image" [src]="cartItem.plat.imageUrl" [alt]="cartItem.plat.name">

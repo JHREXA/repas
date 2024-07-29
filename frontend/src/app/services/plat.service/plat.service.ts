@@ -10,10 +10,12 @@ import { sample_plat, sample_tags } from '../../../data';
 import { Observable, of } from 'rxjs';
 // Importation d'Observable de RxJS pour travailler avec des flux de données asynchrones, et de 'of' pour créer un Observable à partir de valeurs statiques.
 
-import { map } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 // Importation de l'opérateur 'map' de RxJS pour transformer les éléments émis par un Observable.
 
 import { Tag } from '../../shared/models/Tag';
+import { HttpClient } from '@angular/common/http';
+import { PLATS_BY_ID_URL, PLATS_BY_SEARCH_URL, PLATS_BY_TAG_URL, PLATS_TAGS_URL, PLATS_URL } from '../../shared/constants/urls';
 // Importation du modèle Tag depuis le dossier des modèles partagés.
 
 @Injectable({
@@ -23,31 +25,26 @@ import { Tag } from '../../shared/models/Tag';
 export class PlatService {
   // Déclaration de la classe PlatService qui contient la logique métier pour manipuler les plats et les tags.
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
   // Constructeur vide. Peut être utilisé pour injecter des dépendances si nécessaire.
 
   getAll(): Observable<Plat[]> {
-    // Méthode pour obtenir tous les plats. Retourne un Observable qui émet un tableau de plats.
-    return of(sample_plat);
-    // Utilise 'of' pour créer un Observable à partir des données d'exemple 'sample_plat'.
+    return this.http.get<Plat[]>(PLATS_URL).pipe(
+      catchError(error => {
+        console.error('Error fetching plats:', error);
+        return of([]);  // Retourne un tableau vide en cas d'erreur
+      })
+    );
   }
 
   getAllPlatsbySearchTerm(searchTerm: string): Observable<Plat[]> {
     // Méthode pour obtenir tous les plats qui correspondent à un terme de recherche. Prend en paramètre un terme de recherche.
-    return this.getAll().pipe(
-      // Appel à la méthode getAll() pour obtenir tous les plats, puis utilisation de 'pipe' pour chaîner des opérateurs RxJS.
-      map(plats => plats.filter(plat =>
-        // Utilisation de l'opérateur 'map' pour transformer le tableau de plats en un tableau filtré.
-        plat.name.toLowerCase().includes(searchTerm.toLowerCase())
-        // Filtre les plats dont le nom contient le terme de recherche, en ignorant la casse.
-      ))
-    );
+    return this.http.get<Plat[]>(PLATS_BY_SEARCH_URL + searchTerm);
   }
 
-  getAllTags(): Tag[]{
+  getAllTags(): Observable<Tag[]>{
     // Méthode pour obtenir tous les tags. Retourne un tableau de tags.
-    return sample_tags;
-    // Retourne les données d'exemple 'sample_tags'.
+    return this.http.get<Tag[]>(PLATS_TAGS_URL);
   }
 
   getAllPlatsbyTag(tag: string): Observable<Plat[]> {
@@ -58,25 +55,13 @@ export class PlatService {
       // Appel à la méthode getAll() pour obtenir tous les plats.
     } else {
       // Sinon, retourne les plats filtrés par le tag spécifié.
-      return this.getAll().pipe(
-        map(plats => plats.filter(plat => plat.tags?.includes(tag)))
-        // Utilisation de 'map' pour transformer le tableau de plats en un tableau filtré par le tag spécifié.
-      );
+      return this.http.get<Plat[]>(PLATS_BY_TAG_URL + tag);
     }
   }
 
   getPlatbyId(platId: string): Observable<Plat> {
     // Méthode pour obtenir un plat par son ID. Prend en paramètre un ID de plat.
-    return this.getAll().pipe(
-      // Appel à la méthode getAll() pour obtenir tous les plats, puis utilisation de 'pipe' pour chaîner des opérateurs RxJS.
-      map(plats => {
-        // Utilisation de 'map' pour trouver le plat avec l'ID spécifié.
-        const plat = plats.find(plat => plat.id === platId);
-        // Recherche le plat avec l'ID spécifié.
-        return plat ? plat : new Plat();
-        // Retourne le plat trouvé ou un nouvel objet Plat si aucun plat ne correspond.
-      })
-    );
+    return this.http.get<Plat>(PLATS_BY_ID_URL + platId);
   }
   
 }

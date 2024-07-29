@@ -1,5 +1,9 @@
 <app-search></app-search>
 <app-tags></app-tags>
+<app-not-found
+[isVisible]="!plats || !plats.length"
+resetLienMessage="Recherchez à nouveau"
+></app-not-found>
 <ul>
     <li *ngFor="let plat of plats">
         <a [routerLink]="['/plat', plat.id]">

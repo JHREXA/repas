@@ -1,29 +1,38 @@
-<div class="container" *ngIf="(plat$ | async) as platData">
-    <img [src]="platData.imageUrl" [alt]="platData.name">
-    
-    <div class="details">
-      <div class="header">
-        <span class="name">{{ platData.name }}</span>
-        <div class="favourite">
-          <fa-icon [icon]="faHeart" [ngStyle]="{ color: platData.favourite ? 'red' : 'gray' }"></fa-icon>
+<ng-container *ngIf="(plat$ | async) as platData; else notFound">
+    <div class="container">
+      <img [src]="platData.imageUrl" [alt]="platData.name || 'Image of the dish'">
+      
+      <div class="details">
+        <div class="header">
+          <span class="name">{{ platData.name }}</span>
+          <div class="favourite">
+            <fa-icon [icon]="faHeart" [ngStyle]="{ color: platData.favourite ? 'red' : 'gray' }"></fa-icon>
+          </div>
         </div>
+        <div class="rating">
+          <app-star-rating [rating]="platData.stars" [readonly]="true"></app-star-rating>
+        </div>
+        <div class="origins">
+          <span *ngFor="let origin of platData.origins">{{ origin }}</span>
+        </div>
+        <div class="tags">
+          <a *ngFor="let tag of platData.tags" [routerLink]="['/tag', tag]">{{ tag }}</a>
+        </div>
+        <div class="cook-time">
+          <p>Temps de cuisson environ <strong>{{ platData.cookTime }}</strong></p>  
+        </div>
+        <div class="price">
+          <span>{{ platData.price }}€</span>
+        </div>
+        <button (click)="ajouterAuPanier(platData)">Ajouter au panier</button>
       </div>
-      <div class="rating">
-        <app-star-rating [rating]="platData.stars" [readonly]="true"></app-star-rating>
-      </div>
-      <div class="origins">
-        <span *ngFor="let origin of platData.origins">{{ origin }}</span>
-      </div>
-      <div class="tags">
-        <a *ngFor="let tag of platData.tags" [routerLink]="['/tag', tag]">{{ tag }}</a>
-      </div>
-      <div class="cook-time">
-        <p>Temps de cuisson environ <strong>{{ platData.cookTime }}</strong></p>  
-      </div>
-      <div class="price">
-        <span>{{ platData.price }}€</span>
-      </div>
-      <button (click)="ajouterAuPanier(platData)">Ajouter au panier</button>
     </div>
-  </div>
+  </ng-container>
+  
+  <ng-template #notFound>
+    <app-not-found
+      pasTrouveMessage="Plat pas trouvé"
+      resetLienMessage="Revenez à la page d'accueil"
+    ></app-not-found>
+  </ng-template>
   

@@ -1,0 +1,26 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin-top: 3rem;
+}
+
+.details {
+    width: 25rem;
+}
+
+default-button {
+    margin-top: 2rem;
+    margin-bottom: 1.5rem; /* Más margen inferior para separar del texto siguiente */
+}
+
+.login {
+    margin-top: 1rem; /* Añade espacio encima del texto de login */
+    text-align: center; /* Opcional: centra el texto */
+    justify-content: center;
+}
+
+.login a {
+    color: blue; /* Opcional: estilo del enlace */
+}

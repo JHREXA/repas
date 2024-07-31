@@ -7,3 +7,4 @@ export const PLATS_BY_TAG_URL = PLATS_URL + "/tag/";
 export const PLATS_BY_ID_URL = PLATS_URL + "/";
 
 export const USER_LOGIN_URL = BASE_URL + "/api/users/login";
+export const USER_REGISTER_URL = BASE_URL + "/api/users/register";

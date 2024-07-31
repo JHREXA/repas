@@ -133,14 +133,14 @@ export const sample_users: any[] = [
         name: "Paco Lionel",
         email: "paco@paco.es",
         password: "1234",
-        adresse: "Badajoz 222",
+        address: "Badajoz 222",
         isAdmin: true
     },
     {
         name: "Gumersinda",
         email: "gumi@gumi.es",
         password: "1234",
-        adresse: "Villa de Arriba 222",
+        address: "Villa de Arriba 222",
         isAdmin: false
     }
 ]

@@ -3,26 +3,21 @@
         <app-titre titre="Login"></app-titre>
 
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-            <label>Email:</label>
-            <div>
-                <input type="email" placeholder="Email" formControlName="email">
-            </div>
-            <div class="error-list" *ngIf="isSubmitted || formControls['email'].dirty || formControls['email'].touched">
-                <div *ngIf="formControls['email'].errors && formControls['email'].errors['required']">Introduisez une adresse mail</div>
-                <div *ngIf="formControls['email'].errors && formControls['email'].errors['email']">Adresse mail invalide</div>
-            </div>
+            <text-input
+            [control]="formControls['email']"
+            [showErrorsWhen]="isSubmitted"
+            type="email"
+            label="Email">
+            </text-input>
 
-            <label>Password:</label>
-            <div>
-                <input type="password" placeholder="Password" formControlName="password">
-            </div>
-            <div class="error-list" *ngIf="isSubmitted || formControls['password'].dirty || formControls['password'].touched">
-                <div *ngIf="formControls['password'].errors && formControls['password'].errors['required']">Mot de passe requis</div>
-            </div>
+            <text-input
+            [control]="formControls['password']"
+            [showErrorsWhen]="isSubmitted"
+            type="password"
+            label="Password">
+            </text-input>
 
-            <div class="button">
-                <button type="submit">Login</button>
-            </div>
+            <default-button text="Login"></default-button>
         </form>
     </div>
 </div>

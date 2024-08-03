@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Plat } from '../../../shared/models/Plat';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PlatService } from '../../../services/plat.service/plat.service';
+import { PlatService } from '../../../services/plat.service'; 
 import { Observable, tap } from 'rxjs';
 import { faHeart, faClock } from '@fortawesome/free-solid-svg-icons';
-import { CartService } from '../../../services/cart.service/cart.service';
+import { CartService } from '../../../services/cart.service'; 
 
 @Component({
   selector: 'app-plat-page',

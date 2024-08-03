@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 // Importation du décorateur Injectable d'Angular pour permettre l'injection de dépendances dans le service.
 
-import { Plat } from '../../shared/models/Plat';
+import { Plat } from '../shared/models/Plat'; 
 // Importation du modèle Plat depuis le dossier des modèles partagés.
 
-import { sample_plat, sample_tags } from '../../../data';
+import { sample_plat, sample_tags } from '../../data'; 
 // Importation de données d'exemple pour les plats et les tags depuis un fichier de données.
 
 import { Observable, of } from 'rxjs';
@@ -13,9 +13,9 @@ import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 // Importation de l'opérateur 'map' de RxJS pour transformer les éléments émis par un Observable.
 
-import { Tag } from '../../shared/models/Tag';
+import { Tag } from '../shared/models/Tag'; 
 import { HttpClient } from '@angular/common/http';
-import { PLATS_BY_ID_URL, PLATS_BY_SEARCH_URL, PLATS_BY_TAG_URL, PLATS_TAGS_URL, PLATS_URL } from '../../shared/constants/urls';
+import { PLATS_BY_ID_URL, PLATS_BY_SEARCH_URL, PLATS_BY_TAG_URL, PLATS_TAGS_URL, PLATS_URL } from '../shared/constants/urls'; 
 // Importation du modèle Tag depuis le dossier des modèles partagés.
 
 @Injectable({

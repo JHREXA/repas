@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Tag } from '../../../shared/models/Tag';
-import { PlatService } from '../../../services/plat.service/plat.service';
+import { PlatService } from '../../../services/plat.service'; 
 
 @Component({
   selector: 'app-tags',

@@ -1,0 +1,39 @@
+<table>
+    <tr>
+        <td colspan="5">
+            <h3>Éléments de la commande:</h3>
+        </td>
+    </tr>
+    <tr *ngFor="let item of order.items">
+        <td>
+            <a routerLink="/plat/{{item.plat.id}}">
+                <img [src]="item.plat.imageUrl">
+            </a>
+        </td>
+        <td>
+            {{item.plat.name}}
+        </td>
+        <td>
+            {{ item.plat.price  | currency:'EUR':'symbol':'1.2-2' }}
+        </td>
+        <td>
+            {{item.quantite}}
+        </td>
+        <td>
+            {{item.prix  |  currency:'EUR':'symbol':'1.2-2'}}
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3"></td>
+        <td>
+            <strong>
+                Total: 
+            </strong>
+        </td>
+        <td>
+            <strong>
+                {{order.totalPrice   |   currency:'EUR':'symbol':'1.2-2'}}
+            </strong>
+        </td>
+    </tr>
+</table>

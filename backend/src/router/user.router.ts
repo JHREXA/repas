@@ -28,21 +28,25 @@ const generateTokenResponse = (user: any) => {
             "MaCleSecrete",
             { expiresIn: "30d" }
         );
-        user.token = token;
-        return user;
+
+        // Convertir el usuario a un objeto plano
+        const userObject = user.toObject ? user.toObject() : { ...user._doc }; // Asegúrate de que esto sea adecuado para tu modelo
+        userObject.token = token;
+        return userObject;
     } catch (error) {
         console.error("Error generating token:", error);
-        return null; // o lanzar un error si prefieres
+        return null;
     }
 };
+
 
 // Endpoint de login
 router.post("/login", asyncHandler(
     async (req, res) => {
         const { email, password } = req.body;
-        const user = await UserModel.findOne({email, password})
-    
-        if (user) {
+        const user = await UserModel.findOne({ email });
+
+        if (user && await bcrypt.compare(password, user.password)) {
             const userWithToken = generateTokenResponse(user);
             if (userWithToken) {
                 res.send(userWithToken);
@@ -54,6 +58,7 @@ router.post("/login", asyncHandler(
         }
     }
 ));
+
 
 router.post("/register", asyncHandler(
     async (req,res) => {

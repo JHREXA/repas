@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Plat } from '../../../shared/models/Plat';
-import { PlatService } from '../../../services/plat.service/plat.service';
+import { PlatService } from '../../../services/plat.service'; 
 import { faHeart, faClock } from '@fortawesome/free-solid-svg-icons';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';

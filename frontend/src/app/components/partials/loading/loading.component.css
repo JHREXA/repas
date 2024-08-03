@@ -1,0 +1,37 @@
+/* Styles pour le conteneur principal */
+.container {
+    position: fixed; /* Fixe le conteneur pour qu'il couvre tout l'écran */
+    width: 100%; /* Prend toute la largeur de l'écran */
+    height: 100%; /* Prend toute la hauteur de l'écran */
+    background-color: rgba(255, 255, 255, 0.7); /* Fond blanc avec transparence */
+    z-index: 100000; /* Assure que le conteneur est au-dessus des autres éléments */
+    top: 0;
+    left: 0;
+    display: flex; /* Utilise Flexbox pour centrer le contenu */
+    justify-content: center; /* Centre horizontalement */
+    align-items: center; /* Centre verticalement */
+}
+
+/* Styles pour le contenu du chargement */
+.details {
+    display: flex; /* Utilise Flexbox pour aligner les éléments enfants */
+    flex-direction: column; /* Dispose les éléments verticalement */
+    justify-content: center; /* Centre verticalement */
+    align-items: center; /* Centre horizontalement */
+    text-align: center; /* Centre le texte */
+}
+
+/* Styles pour l'image de chargement */
+.details img {
+    width: 100px; /* Ajuste la taille de l'image */
+    height: 100px; /* Ajuste la taille de l'image */
+    opacity: 0.8; /* Rend l'image légèrement transparente */
+    margin-bottom: 20px; /* Espace entre l'image et le texte */
+}
+
+/* Styles pour le texte de chargement */
+.details h1 {
+    color: brown; /* Définit la couleur du texte */
+    text-transform: lowercase; /* Met le texte en minuscules */
+    margin: 0; /* Supprime les marges par défaut pour un meilleur alignement */
+}

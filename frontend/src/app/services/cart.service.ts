@@ -1,9 +1,9 @@
 // Importation des modules nécessaires depuis Angular et RxJS
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Cart } from '../../shared/models/Cart'; 
-import { Plat } from '../../shared/models/Plat'; 
-import { CartItem } from '../../shared/models/CartItem'; 
+import { Cart } from '../shared/models/Cart'; 
+import { Plat } from '../shared/models/Plat'; 
+import { CartItem } from '../shared/models/CartItem'; 
 
 // Décorateur @Injectable permet à Angular de savoir que ce service peut être injecté dans d'autres composants ou services
 @Injectable({
@@ -72,6 +72,10 @@ export class CartService {
   // Méthode pour obtenir un observable du panier
   obtenirCartObservable(): Observable<Cart> {
     return this.cartSubject.asObservable();
+  }
+
+  obtenirCart():Cart{
+    return this.cartSubject.value;
   }
 
   // Méthode privée pour sauvegarder le panier dans le local storage

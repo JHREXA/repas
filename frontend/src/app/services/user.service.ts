@@ -109,9 +109,9 @@ export class UserService {
   private getUserFromLocalStorage(): User {
     if (typeof window !== 'undefined' && window.localStorage) {
       const userJson = localStorage.getItem(USER_KEY);
-      console.log('User from localStorage:', userJson); // Log adicional
+      console.log('User from localStorage:', userJson); 
       if (userJson) return JSON.parse(userJson) as User;
     }
-    return {} as User; // Devuelve un objeto vacío si no hay datos
+    return {} as User; 
   }
 }
